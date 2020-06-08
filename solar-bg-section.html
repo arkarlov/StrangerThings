@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        @keyframes rotation {
+            to {transform: rotate(360deg)}
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+
+        }
+        
+        .wrapper {
+            width: 100%;
+            background-color: #000;
+        }
+        
+        .cosmic {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .cosmic::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            background-color: #000;
+            opacity: .6;
+        }
+        
+        .content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 2;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        
+        .system {
+            width: 100%;
+            height: 100%;
+        
+            position: absolute;
+            background-color: #000;
+            opacity: 1;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            --pEarth: 3s;
+        }
+    
+        .solar {
+            width: 5%;
+            height: 5%;
+            border-radius: 50%;
+            position: absolute;
+            background-color: gold;
+        }
+        
+        .orbit {
+            position: absolute;
+            border-radius: 50%;
+            border-style: dotted;
+            border-width: 1px;
+            border-color: currentColor;
+            
+            animation-name: rotation;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        
+        .orbit::before {
+            content: "";
+            display: block;
+            border-radius: 50%;
+            background-color: currentColor;
+            position: absolute;
+            left: 50%;
+            top: 0px;
+            transform: translate(-50%, -50%);
+        }
+        
+        .mercury {
+            width: 7%;
+            height: 7%;
+            color: gray;
+            animation-duration: calc((var(--pEarth) * 0.24));
+        }    
+        .mercury::before {
+            width: 8%;
+            height: 8%;
+        }
+        
+        .venus {
+            width: 10%;
+            height: 10%;
+            color: yellow;
+            animation-duration: calc(var(--pEarth) * 0.615 );
+        }  
+        .venus::before {
+            width: 9%;
+            height: 9%;
+        }
+        
+        .earth {
+            width: 13%;
+            height: 13%;
+            color: aqua;
+            animation-duration: calc(var(--pEarth) * 1);
+        }
+        .earth::before {
+            width: 9%;
+            height: 9%;
+        }
+        
+        .mars {
+            width: 17%;
+            height: 17%;
+            color: red;
+            animation-duration: calc(var(--pEarth) * 1.88 );
+        }
+        .mars::before {
+            width: 4%;
+            height: 4%;
+        }
+        
+/*
+        .asteroids {
+            width: 21%;
+            height: 21%);
+            border-style: dashed;
+            border-width: 10px;
+            color: darkslategray;
+            animation-duration: calc(var(--pEarth) * 50);
+        }
+*/
+
+        
+        .jupiter {
+            width: 31%;
+            height: 31%;
+            color: orange;
+            animation-duration: calc(var(--pEarth) * 11.857);
+        }
+        .jupiter::before {
+            width: 16%;
+            height: 16%;
+        }
+                
+        .saturn {
+            width: 42%;
+            height: 42%;
+            color: lightgoldenrodyellow;
+            animation-duration: calc(var(--pEarth) * 29.4);
+        }
+        .saturn::before {
+            width: 10%;
+            height: 10%;
+        }
+        
+        .uranus {
+            width: 60.6%;
+            height: 60.6%;
+            color: lightskyblue;
+            animation-duration: calc(var(--pEarth) * 84.02);
+        }
+        .uranus::before {
+            width: 3%;
+            height: 3%;
+        }
+        
+        .neptune {
+            width: 95%;
+            height: 95%;
+            color: darkblue;
+            animation-duration: calc(var(--pEarth) * 164.79);
+        }
+        .neptune::before {
+            width: 3%;
+            height: 3%;
+        }
+        
+        
+        .planet {}
+    
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+          <div class="cosmic">
+    <div class="system">
+        <div class="solar"></div>
+        <div class="orbit mercury"></div>
+        <div class="orbit venus"></div>
+        <div class="orbit earth"></div>
+        <div class="orbit mars"></div>
+<!--        <div class="orbit asteroids"></div>-->
+        <div class="orbit jupiter"></div>
+        <div class="orbit saturn"></div>
+        <div class="orbit uranus"></div>
+        <div class="orbit neptune"></div>
+    </div>
+    <div class="content">
+        <h1>Solar System</h1>
+    </div>
+</div>
+    </div>
+    
+</body>
+</html>

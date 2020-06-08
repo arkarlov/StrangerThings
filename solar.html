@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        @keyframes rotation {
+            to {transform: rotate(360deg)}
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .system {
+            margin: 20px;
+            width: 100%;
+            height: 100%;
+        
+            position: relative;
+            background-color: #000;
+            opacity: 1;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            --rEarth: 5px;
+            --au: 100px;
+            --pEarth: 5s;
+        }
+    
+        .solar {
+            width: calc(var(--rEarth) * 3);
+            height: calc(var(--rEarth) * 3);
+            border-radius: 50%;
+            position: absolute;
+            background-color: gold;
+        }
+        
+        .orbit {
+            position: absolute;
+            border-radius: 50%;
+            border-style: dotted;
+            border-width: 1px;
+            border-color: currentColor;
+            
+            animation-name: rotation;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        
+        .orbit::before {
+            content: "";
+            display: block;
+            border-radius: 50%;
+            background-color: currentColor;
+            position: absolute;
+            left: 50%;
+            top: 0px;
+            transform: translate(-50%, -50%);
+        }
+        
+        .mercury {
+            width: calc(var(--au) * 0.38);
+            height: calc(var(--au) * 0.38);
+            color: gray;
+            animation-duration: calc((var(--pEarth) * 0.24));
+        }    
+        .mercury::before {
+            width: calc(var(--rEarth) * 0.38);
+            height: calc(var(--rEarth) * 0.38);
+        }
+        
+        .venus {
+            width: calc(var(--au) * 0.72);
+            height: calc(var(--au) * 0.72);
+            color: yellow;
+            animation-duration: calc(var(--pEarth) * 0.615 );
+        }  
+        .venus::before {
+            width: calc(var(--rEarth) * 0.95);
+            height: calc(var(--rEarth) * 0.95);
+        }
+        
+        .earth {
+            width: calc(var(--au) * 1);
+            height: calc(var(--au) * 1);
+            color: aqua;
+            animation-duration: calc(var(--pEarth) * 1);
+        }
+        .earth::before {
+            width: calc(var(--rEarth) * 1);
+            height: calc(var(--rEarth) * 1);
+        }
+        
+        .mars {
+            width: calc(var(--au) * 1.52);
+            height: calc(var(--au) * 1.52);
+            color: red;
+            animation-duration: calc(var(--pEarth) * 1.88 );
+        }
+        .mars::before {
+            width: calc(var(--rEarth) * 0.53);
+            height: calc(var(--rEarth) * 0.53);
+        }
+        
+/*
+        .asteroids {
+            width: calc(var(--au) * 3);
+            height: calc(var(--au) * 3);
+            border-style: dashed;
+            border-width: 10px;
+            color: darkslategray;
+            animation-duration: calc(var(--pEarth) * 50);
+        }
+*/
+
+        
+        .jupiter {
+            width: calc(var(--au) * 5.2);
+            height: calc(var(--au) * 5.2);
+            color: orange;
+            animation-duration: calc(var(--pEarth) * 11.857);
+        }
+        .jupiter::before {
+            width: calc(var(--rEarth) * 11.2);
+            height: calc(var(--rEarth) * 11.2);
+        }
+                
+        .saturn {
+            width: calc(var(--au) * 9.54);
+            height: calc(var(--au) * 9.54);
+            color: lightgoldenrodyellow;
+            animation-duration: calc(var(--pEarth) * 29.4);
+        }
+        .saturn::before {
+            width: calc(var(--rEarth) * 9.45);
+            height: calc(var(--rEarth) * 9.45);
+        }
+        
+        .uranus {
+            width: calc(var(--au) * 19.19);
+            height: calc(var(--au) * 19.19);
+            color: lightskyblue;
+            animation-duration: calc(var(--pEarth) * 84.02);
+        }
+        .uranus::before {
+            width: calc(var(--rEarth) * 4);
+            height: calc(var(--rEarth) * 4);
+        }
+        
+        .neptune {
+            width: calc(var(--au) * 30.1);
+            height: calc(var(--au) * 30.1);
+            color: darkblue;
+            animation-duration: calc(var(--pEarth) * 164.79);
+        }
+        .neptune::before {
+            width: calc(var(--rEarth) * 3.88);
+            height: calc(var(--rEarth) * 3.88);
+        }
+        
+        
+        .planet {}
+    
+    </style>
+</head>
+<body>
+   
+    <div class="system">
+        <div class="solar"></div>
+        <div class="orbit mercury"></div>
+        <div class="orbit venus"></div>
+        <div class="orbit earth"></div>
+        <div class="orbit mars"></div>
+<!--        <div class="orbit asteroids"></div>-->
+        <div class="orbit jupiter"></div>
+        <div class="orbit saturn"></div>
+        <div class="orbit uranus"></div>
+        <div class="orbit neptune"></div>
+    </div>
+    
+</body>
+</html>
