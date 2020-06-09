@@ -77,7 +77,7 @@
         
 /*    main    */
         
-        .neonPanel {
+        .neon-panel {
             padding: 30px 10px;
 /*
             display: flex;
@@ -89,9 +89,11 @@
             font-family: 'Monoton', cursive;
             text-align: center;
             text-transform: uppercase;
+            border-color: #555;
+/*            color: #555;*/
         }
         
-        .neonCircleLamp {
+        .neon-circle-lamp {
             display: block;
             box-sizing: border-box;
             width: 100px;
@@ -104,57 +106,77 @@
             color: #555;            
         }
         
-        .neonSymbol {}
-        
-        .switch:checked ~ .neonPanel > .neonCircleLamp {
-            transition: color 0s linear .15s;
-            animation: switchOnFlicker 2s ease-out;
-            animation-fill-mode: forwards;            
+        .neon-symbol {
+            color: #555;
         }
-        .switch:checked ~ .neonPanel > .neonCircleLamp:nth-child(2n+1) {
+        
+        .switch:checked ~ .neon-panel > .neon-circle-lamp {
+            animation: switchOnBorder 2s ease-out forwards;          
+        }
+        .switch:checked ~ .neon-panel > .neon-circle-lamp > span {
+            animation: switchOnSymbol 2s ease-out forwards;
+        } 
+        
+        .switch:checked ~ .neon-panel > .neon-circle-lamp:nth-child(2n+1) {
             color: darkkhaki;
             animation-delay: 1.15s;
-        }   
-        .switch:checked ~ .neonPanel > .neonCircleLamp:nth-child(2n) {
+        }
+        .switch:checked ~ .neon-panel > .neon-circle-lamp:nth-child(2n+1) > span {
+            animation-delay: 1.15s;
+        } 
+        
+        .switch:checked ~ .neon-panel > .neon-circle-lamp:nth-child(2n) {
             color: #4dc876;
             animation-delay: 0.15s;
         }
-        .switch:checked ~ .neonPanel .neonCircleLamp:nth-child(1) {
+        .switch:checked ~ .neon-panel > .neon-circle-lamp:nth-child(2n) > span {
+            animation-delay: 0.15s;
+        } 
+        
+        .switch:checked ~ .neon-panel .neon-circle-lamp:nth-child(1) {
             color: #4dc876;
             animation-delay: 0.65s;
-        }        
-        .switch:checked ~ .neonPanel .neonCircleLamp:nth-child(2) {
+        }
+        .switch:checked ~ .neon-panel > .neon-circle-lamp:nth-child(1) > span {
+            animation-delay: 0.65s;
+        }
+        
+        .switch:checked ~ .neon-panel .neon-circle-lamp:nth-child(2) {
             color: aqua;
             animation-delay: .15s;
         }
-        .switch:checked ~ .neonPanel .neonCircleLamp:nth-child(3) {
+        .switch:checked ~ .neon-panel .neon-circle-lamp:nth-child(2) > span {
+            animation-delay: .15s;
+        }
+        
+        .switch:checked ~ .neon-panel .neon-circle-lamp:nth-child(3) {
             color: crimson;
             animation-delay: 0.25s;
         }
-        .switch:checked ~ .neonPanel .neonCircleLamp:nth-child(4) {
-            animation-name: switchOnFlicker, constFlicker;
-            animation-duration: 2s, 10s;
-            animation-timing-function: ease-out, linear;
-            animation-delay: .15s, 6s;
-            animation-iteration-count: 1, infinite;
+        .switch:checked ~ .neon-panel .neon-circle-lamp:nth-child(3) > span{
+            animation:  symbolFlicker 15s linear 5s infinite;
+        }
+        
+        .switch:checked ~ .neon-panel .neon-circle-lamp:nth-child(6) {
+            animation: switchOnBorder 2s ease-out 0.15s forwards, 
+                       borderFlicker 11s linear 6s infinite;
+        }
+        .switch:checked ~ .neon-panel .neon-circle-lamp:nth-child(6) span {
+             animation-delay: 0.15s;
         }
          
         
-        @keyframes switchOnFlicker {
+        @keyframes switchOnBorder {
             2%, 10%, 30%, 60% {
                 border-color: currentColor;
                 box-shadow: 0px 0px 20px currentColor,
                             0px 0px 10px currentColor,
                             inset 0px 0px 10px currentColor,
                             inset 0px 0px 2px currentColor;
-                text-shadow: 0 0 1px currentColor,
-                             0 0 8px currentColor,
-                             0 0 15px currentColor;
             }
-            6%, 12%, 33% {
-                border-color: none;
+            0%, 6%, 12%, 33% {
+                border-color: inherit;
                 box-shadow: none;
-                text-shadow: none;
             }
             
             100% {
@@ -163,29 +185,53 @@
                             0px 0px 35px currentColor,
                             inset 0px 0px 15px currentColor,
                             inset 0px 0px 10px currentColor;
-                text-shadow: 0 0 1px currentColor,
-                             0 0 20px currentColor,
-                             0 0 80px currentColor;
             }
         }
         
-        @keyframes constFlicker {
-            0%,12%,18.999%,23%,31.999%,37%,44.999%,46%,49.999%,51%,58.999%,61%,68.999%,71%,85.999%,96%,100% {
-                border-color: currentColor;
-                box-shadow: 0px 0px 20px currentColor,
-                            0px 0px 10px currentColor,
-                            inset 0px 0px 10px currentColor,
-                            inset 0px 0px 2px currentColor;
-                text-shadow: 0 0 1px currentColor,
-                             0 0 8px currentColor,
-                             0 0 15px currentColor;
-                opacity: 0.99;
+        @keyframes switchOnSymbol {
+            2%, 10%, 30%, 60% {
+                color: inherit;
+                text-shadow: 0 0 5px currentColor,
+                             0 0 15px currentColor,
+                             0 0 20px currentColor;
             }
-            19%,22.99%,32%,36.999%,45%,45.999%,50%,50.99%,59%,60.999%,69%,70.999%,86%,95.999% {
-                border-color: none;
-                box-shadow: none;
+           0%, 6%, 12%, 33% {
+                color: #555;
                 text-shadow: none;
-                opacity: 0.4;
+            }
+            
+            100% {
+                color: inherit;
+                text-shadow: 0 0 5px currentColor,
+                             0 0 20px currentColor,
+                             0 0 50px currentColor;
+            }
+        }
+        
+        @keyframes borderFlicker {
+            0%,19.999%,22%,62.999%,64%, 64.999%,70%,100% {
+                border-color: currentColor;
+                box-shadow: 0px 0px 25px currentColor,
+                            0px 0px 35px currentColor,
+                            inset 0px 0px 15px currentColor,
+                            inset 0px 0px 10px currentColor;
+            }
+            20%,21.999%,63%,63.999%,65%,69.999% {
+                border-color: inherit;
+                box-shadow: none;
+            }
+        }
+        
+        @keyframes symbolFlicker {
+           0%,12%,18.999%,23%,31.999%,37%,44.999%,46%,49.999%,51%,58.999%,61%,61.999%,63%,63.999%,64.999%,68.999%,71%,85.999%,96%,100%  {
+                color: currentColor;
+                text-shadow: 0 0 5px currentColor,
+                             0 0 20px currentColor,
+                             0 0 50px currentColor;
+            }
+            19%,22.99%,32%,36.999%,45%,45.999%,50%,50.99%,59%,60.999%,62%,62.999%,64%,69%,70.999%,86%,95.999% {
+                color: #555;
+                text-shadow: none;
             }
         }
         
@@ -199,13 +245,13 @@
             <input type="checkbox" class="switch" id="switch">
             <label for="switch" class="switch-for"></label>
 
-            <aside class="neonPanel">      
-                <div class="neonCircleLamp"><span class="neonSymbol">f</span></div>
-                <div class="neonCircleLamp"><span class="neonSymbol">r</span></div>
-                <div class="neonCircleLamp"><span class="neonSymbol">i</span></div>
-                <div class="neonCircleLamp"><span class="neonSymbol">e</span></div>
-                <div class="neonCircleLamp"><span class="neonSymbol">n</span></div>
-                <div class="neonCircleLamp"><span class="neonSymbol">d</span></div>
+            <aside class="neon-panel">      
+                <div class="neon-circle-lamp"><span class="neon-symbol">f</span></div>
+                <div class="neon-circle-lamp"><span class="neon-symbol">r</span></div>
+                <div class="neon-circle-lamp"><span class="neon-symbol">i</span></div>
+                <div class="neon-circle-lamp"><span class="neon-symbol">e</span></div>
+                <div class="neon-circle-lamp"><span class="neon-symbol">n</span></div>
+                <div class="neon-circle-lamp"><span class="neon-symbol">d</span></div>
             </aside>
         </div>
         
