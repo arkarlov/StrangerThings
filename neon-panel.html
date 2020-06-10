@@ -55,6 +55,16 @@
             background-color: #555;
             position: relative;
         }
+        .switch-for > span {
+            height: 100%;
+            font-size: 16px;
+            line-height: 50px;
+            font-family: monospace, sans-serif;
+            color: #777;
+            position: absolute;
+            top: 0;
+            left: 30px;
+        }
         .switch-for::after {
             content: ".";
             width: 100%;
@@ -122,7 +132,7 @@
             animation-delay: 1.15s;
         }
         .switch:checked ~ .neon-panel > .neon-circle-lamp:nth-child(2n+1) > span {
-            animation-delay: 1.15s;
+            animation-delay: 1.23s;
         } 
         
         .switch:checked ~ .neon-panel > .neon-circle-lamp:nth-child(2n) {
@@ -203,8 +213,8 @@
             100% {
                 color: inherit;
                 text-shadow: 0 0 5px currentColor,
-                             0 0 20px currentColor,
-                             0 0 50px currentColor;
+                             0 0 15px currentColor,
+                             0 0 20px currentColor;
             }
         }
         
@@ -226,8 +236,8 @@
            0%,12%,18.999%,23%,31.999%,37%,44.999%,46%,49.999%,51%,58.999%,61%,61.999%,63%,63.999%,64.999%,68.999%,71%,85.999%,96%,100%  {
                 color: currentColor;
                 text-shadow: 0 0 5px currentColor,
-                             0 0 20px currentColor,
-                             0 0 50px currentColor;
+                             0 0 15px currentColor,
+                             0 0 20px currentColor;
             }
             19%,22.99%,32%,36.999%,45%,45.999%,50%,50.99%,59%,60.999%,62%,62.999%,64%,69%,70.999%,86%,95.999% {
                 color: #555;
@@ -243,7 +253,7 @@
    <section class="section clearfix">
         <div class="neon-wrapper">
             <input type="checkbox" class="switch" id="switch">
-            <label for="switch" class="switch-for"></label>
+            <label for="switch" class="switch-for"><span>on/off</span></label>
 
             <aside class="neon-panel">      
                 <div class="neon-circle-lamp"><span class="neon-symbol">f</span></div>
