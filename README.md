@@ -1,6 +1,6 @@
 # StrangerThings
 Разные разности
 
-NeonPanel: [https://artemkarlov.github.io/StrangerThings/neon-square.html](https://artemkarlov.github.io/StrangerThings/neon-square.html)
+NeonSquare: [https://artemkarlov.github.io/StrangerThings/neon-square.html](https://artemkarlov.github.io/StrangerThings/neon-square.html)
 
 NeonPanel: [https://artemkarlov.github.io/StrangerThings/neon-panel.html](https://artemkarlov.github.io/StrangerThings/neon-panel.html)
